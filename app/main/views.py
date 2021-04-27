@@ -16,3 +16,7 @@ def index():
   message = "welcome"
   return render_template('index.html',title = title,message=message)
 
+
+@main.route("/add_pizza")
+def add_pizza():
+  
