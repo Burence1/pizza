@@ -18,15 +18,19 @@ def index():
   return render_template('index.html',title = title,message=message)
 
 
-@main.route("/add_pizza")
+@main.route("/add_pizza/",methods=["GET","POST"])
+@login_required
 def add_pizza():
   form = AddPizza()
-  if current_user != "burens":
-    abort(404)
-  elif form.validate_on_submit():
-    pizza=Pizza(name=form.name.data,toppings=form.toppings.data,size=form.size.data)
+  if form.validate_on_submit():
+    pizza=Pizza(name=form.name.data,toppings=form.toppings.data,user=current_user,size=form.size.data)
+    print(pizza)
     pizza.save_pizza()
 
-    return redirect(url_for("main.index"))
+    return redirect(url_for("main.add_pizza"))
   title = "New Pizza"
-  render_template ("add_pizza.html",title=title,form=form)
+  return render_template ("add_pizza.html",title=title,form=form)
+
+@main.route("/basic")
+def basic():
+  return render_template('basic.html')

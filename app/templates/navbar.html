@@ -1,0 +1,15 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {% if current_user.username == "burens"%}
+      <li><a href="/add_pizza">Add Pizza</a></li>
+      {% endif %}
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 class AddPizza(FlaskForm):
   name = TextField("Add pizza",validators=[Required()])
   toppings=StringField("Add toppings",validators=[Required()])
-  size=SelectField("Add size",validators=[Required()])
+  size=SelectField("Add size",choices=[("small size","small size"),("medium size","medium size"),("large size","large size")],validators=[Required()])
   submit=SubmitField("Add Pizza")
 
 class SelectPizza(FlaskForm):
